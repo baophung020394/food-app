@@ -53,9 +53,9 @@ function Register({ setAlert, register, isAuthenticated }) {
     }
 
     if(isAuthenticated) {
-        return <Redirect to="/" />
+        return <Redirect to="/dashboard" />
     }
-    
+
     return (
         <Fragment>
             <Container className={classes.container} maxWidth="xs">

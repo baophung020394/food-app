@@ -12,6 +12,8 @@ import Navbar from './components/header/Navbar';
 import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from '../src/redux/actions/auth';
+import Dashoard from './components/dashboard/Dashoard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 
 if (localStorage.token) {
@@ -35,6 +37,7 @@ function App() {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <PrivateRoute exact path="/dashboard" component={Dashoard} />
             </Switch>
           </div>
         </Fragment>

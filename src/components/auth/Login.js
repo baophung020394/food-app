@@ -46,7 +46,7 @@ function Login({ login, setAlert, isAuthenticated }) {
     }
 
     if(isAuthenticated) {
-        return <Redirect to="/" />
+        return <Redirect to="/dashboard" />
     }
     return (
         <Container className={classes.container} maxWidth="xs">
