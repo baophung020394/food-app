@@ -5,7 +5,7 @@ const initialState = [];
 export default function (state = initialState, action) {
 
     const { type, payload } = action;
-    console.log('alert reducer')
+    console.log(payload);
     switch (type) {
         case SET_ALERT:
             return [...state, payload];

@@ -7,7 +7,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../redux/actions/auth';
+import { setAlert } from '../../redux/actions/alert';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Login({ login }) {
+function Login({ login, setAlert, isAuthenticated }) {
     const classes = useStyles();
     const [formData, setFormData] = useState({
         email: '',
@@ -43,6 +45,9 @@ function Login({ login }) {
             })
     }
 
+    if(isAuthenticated) {
+        return <Redirect to="/" />
+    }
     return (
         <Container className={classes.container} maxWidth="xs">
             <form onSubmit={e => onSubmit(e)}>
@@ -58,7 +63,7 @@ function Login({ login }) {
                                     size="small"
                                     variant="outlined"
                                     onChange={e => onChange(e)}
-                                    required
+                                    
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -70,7 +75,7 @@ function Login({ login }) {
                                     type="password"
                                     variant="outlined"
                                     onChange={e => onChange(e)}
-                                    required
+                                    
 
                                 />
                             </Grid>
@@ -88,7 +93,13 @@ function Login({ login }) {
 }
 
 Login.propTypes = {
-    login: PropTypes.func.isRequired
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, { login })(Login)
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login, setAlert })(Login)
