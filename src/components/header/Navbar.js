@@ -8,7 +8,11 @@ import { logout } from '../../redux/actions/auth';
 function NavbarComp({ auth: { isAuthenticated, loading }, logout }) {
 
     const authLinks = (
-        <Link to="" onClick={logout} className="nav-link">Logout</Link>
+        <Fragment>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/dashboard" className="nav-link">Dashboard</Link>
+            <Link to="" onClick={logout} className="nav-link">Logout</Link>
+        </Fragment>
     );
 
     const guestLinks = (

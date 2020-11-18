@@ -6,8 +6,11 @@ import {
 } from './types';
 
 export const getCurrentProfile = () => async dispatch => {
+    // if (localStorage.token) {
+    //     setAuthToken(localStorage.token)
+    // }
     try {
-        
+
         const res = await axios.get(`http://localhost:5000/api/profile/me`);
 
         dispatch({
