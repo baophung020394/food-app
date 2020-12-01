@@ -99,6 +99,7 @@ Login.propTypes = {
 }
 
 const mapStateToProps = state => ({
+    // From store combine reducer
     isAuthenticated: state.auth.isAuthenticated
 });
 
